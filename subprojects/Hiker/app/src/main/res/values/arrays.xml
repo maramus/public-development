@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="entries_format_list_preference">
+        <item>Format Option 1</item>
+        <item>Format Option 2</item>
+        <item>Format Option 3</item>
+    </string-array>
+
+    <string-array name="entryvalues_format_list_preference">
+        <item>Format1</item>
+        <item>Format2</item>
+        <item>Format3</item>
+    </string-array>
+
+
+    <string-array name="entries_battery_saving_list_preference">
+        <item>Battery Option 1</item>
+        <item>Battery Option 2</item>
+        <item>Battery Option 3</item>
+    </string-array>
+
+    <string-array name="entryvalues_battery_saving_list_preference">
+        <item>Battery1</item>
+        <item>Battery2</item>
+        <item>Battery3</item>
+    </string-array>
+
+
+    <string-array name="empty_array"></string-array>
+
+    <string-array name="default_array">
+        <item>Array1</item>
+        <item>Array2</item>
+    </string-array>
+
+</resources>
+

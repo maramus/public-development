@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Choose your Format settings">
+
+        <ListPreference
+            android:defaultValue="Format3"
+            android:dialogTitle="My Preferred Format"
+            android:entries="@array/entries_format_list_preference"
+            android:entryValues="@array/entryvalues_format_list_preference"
+            android:key="format_preference"
+            android:summary="Choose your preferred format"
+            android:title="Select Format"
+            />
+
+    </PreferenceCategory>
+
+
+    <PreferenceScreen
+        android:title="Read saved preferences"
+        android:summary="Access the saved preferences">
+
+        <intent
+            android:targetClass="com.tardree.hiker.ShowPreferences"
+            android:targetPackage="com.tardree.hiker"
+
+            />
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

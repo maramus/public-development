@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="Hiker Settings">
+
+        <CheckBoxPreference
+            android:key="accuracy_preference"
+            android:title="Accuracy"
+            android:summary="Enable FINE accuracy ?"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="child_accuracy_preference"
+            android:dependency="accuracy_preference"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:title="Smart FINE logic"
+            android:summary="Enable smarter logic for FINE accuracy"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="audio_preference"
+            android:title="Audio"
+            android:summary="Enable audio"
+            android:defaultValue="false"/>
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="User Identification">
+
+    <EditTextPreference
+        android:key="name_preference"
+        android:title="Name"
+        android:summary="What's your name?"
+        android:dialogTitle="Enter your Name" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="Logging Settings">
+
+
+        <CheckBoxPreference
+            android:key="logging_preference"
+            android:title="Logging"
+            android:summary="Alter detailed logging settings"
+            android:defaultValue="false"/>
+
+        <PreferenceScreen
+            android:dependency="logging_preference"
+            android:layout="?android:attr/preferenceLayoutChild"
+                android:title="Logging Preferences"
+                android:summary="Open for list of detailed logging settings">
+
+            <intent  android:targetPackage="com.tardree.hiker"
+                android:targetClass="com.tardree.hiker.HeadersActivity"
+                />
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+    
+</PreferenceScreen>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Choose your Battery Saving Settings">
+
+        <ListPreference
+            android:defaultValue="Battery2"
+            android:dialogTitle="My Preferred Battery Saving"
+            android:entries="@array/entries_battery_saving_list_preference"
+            android:entryValues="@array/entryvalues_battery_saving_list_preference"
+            android:key="battery_saving_preference"
+            android:summary="Select your battery saving preference"
+            android:title="Select your battery saving preference" />
+
+    </PreferenceCategory>
+
+    <PreferenceScreen
+        android:summary="trying out the multi list choice"
+        android:title="Try MultiListChoice">
+
+        <PreferenceCategory android:title="Select options from list">
+
+            <MultiSelectListPreference
+                android:dialogTitle="Select all your options"
+                android:entries="@array/entries_battery_saving_list_preference"
+                android:entryValues="@array/entryvalues_battery_saving_list_preference"
+                android:key="multi_choice_prefs"
+                android:summary="Press to show list"
+                android:defaultValue="@array/empty_array"/>
+        </PreferenceCategory>
+
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Read saved preferences"
+        android:summary="Access the saved preferences">
+
+        <intent
+            android:targetClass="com.tardree.hiker.ShowPreferences"
+            android:targetPackage="com.tardree.hiker"
+            />
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

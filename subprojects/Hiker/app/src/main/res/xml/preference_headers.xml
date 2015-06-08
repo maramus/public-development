@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header
+        android:fragment="com.tardree.hiker.HeadersActivity$HeadersFragment"
+        android:summary="Select your format"
+        android:title="Logging Format">
+        <extra
+            android:name="header"
+            android:value="one" />
+    </header>
+
+    <header
+        android:fragment="com.tardree.hiker.HeadersActivity$HeadersFragment"
+        android:summary="Select your battery performance"
+        android:title="Battery Performance">
+        <extra
+            android:name="header"
+            android:value="two" />
+    </header>
+</preference-headers>

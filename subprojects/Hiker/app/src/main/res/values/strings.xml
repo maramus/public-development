@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Hiker</string>
+    <string name="action_settings">Settings</string>
+    <string name="button">Update The TextView</string>
+    <string name="hint">A Name</string>
+    <string name="map_display">Map</string>
+
+    <!--
+
+    Obtain a Google Maps API key from (clicking "Create" at the end) :
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A4:5C:33:31:22:FB:E4:71:39:CB:A6:7C:9F:AD:59:12:6D:76:E7:1E;com.tardree.hiker
+
+    Change the value for the "google_maps_key" entry below to the new value (starting with "Alza") :
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyCJvygZJEFTMzkz_vjka77aLKFg1_aj1kA</string>
+</resources>
