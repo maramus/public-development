@@ -2,7 +2,6 @@ package com.tardree.hiker;
 
 import android.content.IntentSender;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +16,12 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -24,14 +29,12 @@ public class MainActivity extends AppCompatActivity implements
     private TextView latitude;
     private TextView longitude;
     private TextView providerInformation;
-    private LocationManager locationManager;
-    private LocationListener coarseListener;
-    private LocationListener fineListener;
-
+    private String FILENAME = "coordinates.txt";
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
-
-    TextView mainTextView;
+    private File file;
+    private FileOutputStream fOut;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss.SSS");
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -43,14 +46,23 @@ public class MainActivity extends AppCompatActivity implements
                     Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(MainActivity.this, location.getProvider() + " " + ": Location : " + String.valueOf(location.getLatitude()) + ", " + String.valueOf(location.getLongitude()),
-                    Toast.LENGTH_SHORT).show();
             latitude = (TextView) findViewById(R.id.latitude);
             longitude = (TextView) findViewById(R.id.longitude);
             providerInformation = (TextView) findViewById(R.id.providerInformation);
             latitude.setText("Latitude: " + String.valueOf(location.getLatitude()));
             longitude.setText("Longitude: " + String.valueOf(location.getLongitude()));
             providerInformation.setText("Provider: " + String.valueOf(location.getProvider()));
+            Date now = Calendar.getInstance().getTime();
+            String nowStr = dateFormat.format(now);
+            String content = nowStr + ", " + String.valueOf(location.getLatitude()) + ", " + String.valueOf(location.getLongitude());
+            try {
+                fOut.write(content.getBytes());
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(MainActivity.this, location.getProvider() + " " + ": Wrote : " + content + " : to : " + file.getAbsolutePath(),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -73,6 +85,18 @@ public class MainActivity extends AppCompatActivity implements
                 .setFastestInterval(GPS_FASTEST_INTERVAL); // 1 second, in milliseconds
 
         Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+        File root = android.os.Environment.getExternalStorageDirectory();
+        File dir = new File (root.getAbsolutePath() + "/download");
+        dir.mkdirs();
+        file = new File(dir, FILENAME);
+
+        try {
+            fOut = new FileOutputStream(file);
+//            fOut = openFileOutput(file, MODE_WORLD_READABLE);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
         showLocation(location);
     }
 
